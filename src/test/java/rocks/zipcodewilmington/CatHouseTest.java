@@ -22,22 +22,65 @@ public class CatHouseTest {
     @Test
     public void addTest() {
         String expected = "Sew";
-        Cat cat = new Cat("Sew",new Date(),1920);
+        Cat cat = new Cat("Sew",new Date(),92);
         //When
         catHouse.add(cat);
-        Cat actual = catHouse.getCatById(1920);
+        Cat actual = catHouse.getCatById(92);
 
         Assert.assertEquals(expected, actual.getName());
     }
 
     @Test
-    public void removeTest() {
-        Cat cat = new Cat(null,null,1920);
+    public void removeIdTest() {
+       //Given
+        Cat cat = new Cat("Bajool",null,1920);
         Integer expected = null;
         catHouse.add(cat);
+        //When
         catHouse.remove(1920);
         Cat actual = catHouse.getCatById(1920);
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
 
+    @Test
+    public void removeCatTest() {
+        //Given
+        Cat cat = new Cat("Needle",null,20);
+        Integer expected = null;
+        catHouse.add(cat);
+        //When
+        catHouse.remove(cat);
+        Cat actual = catHouse.getCatById(20);
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCatByIdTest() {
+        //Given
+        Cat cat = new Cat("Bajool",null,1920);
+        String expected = "Bajool";
+        catHouse.add(cat);
+        //When
+        Cat actual = catHouse.getCatById(1920);
+        //Then
+        Assert.assertEquals(expected, actual.getName());
+    }
+
+    @Test
+    public void getNumberOfCatsTest() {
+        //Given
+        CatHouse.clear();
+        Cat cat1 = new Cat("Button",null,113);
+        Cat cat2 = new Cat("Bear",null,2021);
+        Integer expected = 2;
+        catHouse.add(cat1);
+        catHouse.add(cat2);
+        //When;
+        Integer actual = catHouse.getNumberOfCats();
+        //Then
+        System.out.println(catHouse.getNumberOfCats());
         Assert.assertEquals(expected, actual);
     }
 
