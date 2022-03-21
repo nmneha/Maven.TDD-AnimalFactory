@@ -41,8 +41,8 @@ public class DogHouseTest {
         String expected = "Chuckle";
         Dog dog = new Dog("Chuckle",new Date(),45);
         //When
-        dogHouse.add(dog);
-        Dog actual = dogHouse.getDogById(45);
+        DogHouse.add(dog);
+        Dog actual = DogHouse.getDogById(45);
 
         Assert.assertEquals(expected, actual.getName());
     }
@@ -51,13 +51,12 @@ public class DogHouseTest {
     public void removeIdTest() {
         //Given
         Dog dog = new Dog("Storm",null,15);
-        Integer expected = null;
-        dogHouse.add(dog);
+        DogHouse.add(dog);
         //When
-        dogHouse.remove(15);
-        Dog actual = dogHouse.getDogById(15);
+        DogHouse.remove(15);
+        Dog actual = DogHouse.getDogById(15);
         //Then
-        Assert.assertEquals(expected, actual);
+        Assert.assertNull(actual);
     }
 
     @Test
@@ -65,10 +64,10 @@ public class DogHouseTest {
         //Given
         Dog dog = new Dog("Thomas",null,33);
         Integer expected = null;
-        dogHouse.add(dog);
+        DogHouse.add(dog);
         //When
-        dogHouse.remove(dog);
-        Dog actual = dogHouse.getDogById(33);
+        DogHouse.remove(dog);
+        Dog actual = DogHouse.getDogById(33);
         //Then
         Assert.assertEquals(expected, actual);
     }
@@ -91,14 +90,13 @@ public class DogHouseTest {
         DogHouse.clear();
         Dog dog = new Dog("Jorge",null,1920);
         Dog dog2 = new Dog("Pinwheel",null,2021);
-        Integer expected = 2;
-        dogHouse.add(dog);
-        dogHouse.add(dog2);
+        DogHouse.add(dog);
+        DogHouse.add(dog2);
         //When;
-        Integer actual = dogHouse.getNumberOfDogs();
+        Integer actual = DogHouse.getNumberOfDogs();
         //Then
-        System.out.println(dogHouse.getNumberOfDogs());
-        Assert.assertEquals(expected, actual);
+        System.out.println(DogHouse.getNumberOfDogs());
+        Assert.assertNull(actual);
     }
 
 }
